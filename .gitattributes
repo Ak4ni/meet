@@ -1,10 +1,10 @@
 # Auto detect text files and perform LF normalization
 text=Auto
-node_modules\
+node_modules/
 jspm_packages
 
 #Serverless directories
 .Serverless
 
 #enviroment variebles
-config.json
+/config.json
