@@ -1,3 +1,5 @@
+org: ak4ni
+app: auth-server
 service: auth-server
 
 provider:
@@ -21,5 +23,5 @@ getAccessToken:
   handler: handler.getAccessToken
   events:
     http:
-    path: api/token/{code}
-    method: get
+      path: api/token/{code}
+      method: get
