@@ -50,7 +50,7 @@ module.exports.getAuthURL = async () => {
   });
 
   return {
-    statusCode: 200,
+    statusCode: 20,
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
@@ -60,37 +60,37 @@ module.exports.getAuthURL = async () => {
   };
 };
 
-//module.export.getAccessToken = async (event) => {
- // const oAuth2Client = new google.auth.OAuth2(
-  //  client_id,
-  //  client_secret,
- //   redirect_uris[0]
- // );
-//  // decode authorization code extracted from the url query
- // const code = decodeURIComponent(`${event.pathParameters.code}`);
-//
- // return new Promise((resolve, reject) => {
+module.export.getAccessToken = async (event) => {
+  const oAuth2Client = new google.auth.OAuth2(
+   client_id,
+    client_secret,
+    redirect_uris[0]
+ );
+  // decode authorization code extracted from the url query
+  const code = decodeURIComponent(`${event.pathParameters.code}`);
 
-  //  oAuth2Client.getToken(code, (err, token) => {
-    //  if (err) {
-     //   return reject(err);
-     // }
-     // return resolve(token);
-     // });
-   // })
-   // .then ((token) => {
-     // //repond with oauth token
-     // return{
-       // statusCode: 200,
-       // body: JSON.stringify(token),
-     // };
-   // })
-    //.cath((err) => {
-     // //Hadle error
-     // console.error(err);
-     //return {
-       // statusCode: 500,
-       // body: JSON.stringify(err),
-     // };
-   // });
-//};
+  return new Promise((resolve, reject) => {
+
+    oAuth2Client.getToken(code, (err, token) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(token);
+      });
+    })
+    .then ((token) => {
+      //repond with oauth token
+      return{
+        statusCode: 200,
+        body: JSON.stringify(token),
+      };
+    })
+    .cath((err) => {
+      //Hadle error
+      console.error(err);
+     return {
+        statusCode: 500,
+        body: JSON.stringify(err),
+      };
+    });
+};
